@@ -18,7 +18,7 @@
     (unix:sleep *sleep-time*)
     (ros::spin-once)
     (setq res (connect-device *target-device-address*))
-    (setq msg (oneshot-subscribe (format nil "~A/output" *target-node-name*)))
+    (setq msg (one-shot-subscribe (format nil "~A/output" *target-node-name*)))
     (send *ri* :speak (format nil "Read text as ~A from device" (send msg :data)))
     (ros::ros-info (format nil "Read text as ~A from device" (send msg :data)))
     (send msg :data *robot-name*)
