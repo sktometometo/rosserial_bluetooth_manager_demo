@@ -11,7 +11,7 @@
 (setq *robot-name* (ros::get-param "/robot/name"))
 (setq *target-node-name* (ros::get-param "~target_node_name" "serial_node_for_A4_CF_12_44_33_F2"))
 
-(ros::advertise (format nil "~A/output") std_msgs::String 1)
+(ros::advertise (format nil "~A/output" *target-node-name*) std_msgs::String 1)
 
 (let (res msg)
   (while (ros::ok)
