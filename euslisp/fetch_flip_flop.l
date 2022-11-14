@@ -11,7 +11,7 @@
 (setq *robot-name* (ros::get-param "/robot/name"))
 (setq *target-node-name* (ros::get-param "~target_node_name" "serial_node_for_A4_CF_12_44_33_F2"))
 
-(ros::advertise (format nil "~A/output" *target-node-name*) std_msgs::String 1)
+(ros::advertise (format nil "~A/input" *target-node-name*) std_msgs::String 1)
 
 (let (res msg)
   (while (ros::ok)
@@ -24,7 +24,7 @@
         (send *ri* :speak (format nil "Read text as ~A from device" (send msg :data)))
         (ros::ros-info (format nil "Read text as ~A from device" (send msg :data)))
         (send msg :data *robot-name*)
-        (ros::publish (format nil "~A/output" *target-node-name*) msg)
+        (ros::publish (format nil "~A/input" *target-node-name*) msg)
         (send *ri* :speak (format nil "Write text as ~A to device" (send msg :data)))
         (ros::ros-info (format nil "Write text as ~A to device" (send msg :data)))
         (dotimes (i 5)
