@@ -6,7 +6,7 @@
 
 (fetch-init)
 
-(setq *sleep-time* (ros::get-param "~sleep_time" 1))
+(setq *sleep-time* (ros::get-param "~sleep_time" 10))
 (setq *target-device-address* (ros::get-param "~target_device_address" "A4:CF:12:44:33:F2"))
 (setq *robot-name* (ros::get-param "/robot/name"))
 (setq *target-node-name* (ros::get-param "~target_node_name" "serial_node_for_A4_CF_12_44_33_F2"))
